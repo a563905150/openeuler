@@ -1,0 +1,27 @@
+/**
+ * @file  首页接口配置文件
+ * */
+
+import appAjax from './../libs/ajax-utils';
+const sigApi = '-sig';
+export const meetingList = () => {
+    return new Promise((resolve, reject) => {
+        appAjax.postJson({
+            otherBaseUrl: sigApi,
+            url: '/meetingsdata/',
+            type: 'get',
+            success(result) {
+                if (result) {
+                    resolve(result);
+                    return;
+                }
+                reject(result);
+            },
+            error(msg) {
+                reject(msg);
+            }
+
+        });
+
+    });
+};
